@@ -49,7 +49,7 @@ php artisan storage:link     # Recreate the storage symlink
 ```
 
  ⚠️ **Note**  
- The `public/storage` symlink is **not included** in the archive (Windows can’t compress it).  
+ The `public/storage` symlink is **not included** in the archive/github (Windows can’t compress it).  
  Make sure to run:
  ```bash
  php artisan storage:link
@@ -66,3 +66,9 @@ npm run dev
 ```
 
 ℹ️ Any code changes in **`react-part/`** will automatically reload in the browser.
+
+
+you should see something like this 
+
+<img width="1343" height="641" alt="image" src="https://github.com/user-attachments/assets/f84a6e50-6276-4edb-8956-5d921b75b8ae" />
+
