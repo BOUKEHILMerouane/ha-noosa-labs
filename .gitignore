@@ -1,0 +1,13 @@
+# Laravel
+Laravel-part/vendor
+Laravel-part/node_modules
+Laravel-part/public/storage
+Laravel-part/storage/*.key
+Laravel-part/.env
+
+# React
+react-part/node_modules
+react-part/dist
+
+# Docker volumes
+dbdata

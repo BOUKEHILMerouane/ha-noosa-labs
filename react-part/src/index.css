@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Wavy border animation */
+@keyframes wavy-border {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 20; }
+}
+
+.dropzone-border {
+  background: white;
+  border: 3px solid transparent;
+  border-radius: 0.75rem;
+  position: relative;
+}
+
+.dropzone-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #4f46e5 0 10px,
+    #10b981 10px 20px
+  );
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  /* animation setup */
+  background-size: 200% auto;
+  animation: border-move 1s linear infinite;
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+@keyframes border-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+.dropzone-border.active::before {
+  opacity: 1; /* show animated border */
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash {
+  animation: dash 1s linear infinite;
+  stroke: #4f46e5; /* Indigo when active */
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  border-radius: 8px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
