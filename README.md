@@ -34,28 +34,42 @@ This will start 3 containers:
 - **Root password**: `rootpass`  
 
 
-## 5. Laravel setup
+## STEP 5 — Laravel Setup
 
-Enter the Laravel container:
+# 5.1 Install PHP dependencies (Composer)
+# ----------------------------------------
+# Run this OUTSIDE any container, from the Laravel folder where composer.json is located.
 
+# 👉 Windows PowerShell
 ```bash
-docker exec -it laravel-app bash
-
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed   # Creates tables and seeds sample data
-php artisan storage:link     # Recreate the storage symlink
+cd \path\to\ha-noosa-labs-main\laravel
+docker run --rm -v ${PWD}:/app -w /app composer install
+```
+# 👉 Linux / macOS
+```bash
+cd /path/to/ha-noosa-labs-main/laravel
+docker run --rm -v $(pwd):/app -w /app composer install
 ```
 
- ⚠️ **Note**  
- The `public/storage` symlink is **not included** in the archive/github (Windows can’t compress it).  
- Make sure to run:
- ```bash
- php artisan storage:link
- ```
- after the container is up, otherwise uploaded files won’t be accessible.
 
+# 5.2 Configure Laravel INSIDE the container
+# ------------------------------------------
+# Run these from the project root (where docker-compose.yml is),
+# they execute inside the laravel-app container.
+
+```bash
+docker exec -it laravel-app cp .env.example .env      # Copy env file
+docker exec -it laravel-app php artisan key:generate  # Generate app key
+docker exec -it laravel-app php artisan migrate --seed  # Run migrations + seed
+docker exec -it laravel-app php artisan storage:link    # Recreate storage symlink
+```
+
+
+# ⚠️ NOTE
+# The "public/storage" symlink is NOT included in the repo (Windows cannot compress symlinks).
+# Make sure to run the last command:
+#   docker exec -it laravel-app php artisan storage:link
+# after the container is up, otherwise uploaded files won’t be accessible.
 
 ## 6. React setup
 
