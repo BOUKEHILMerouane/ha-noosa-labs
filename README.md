@@ -37,8 +37,8 @@ This will start 3 containers:
 ## STEP 5 — Laravel Setup
 
 # 5.1 Install PHP dependencies (Composer)
-# ----------------------------------------
-# Run this OUTSIDE any container, from the Laravel folder where composer.json is located.
+ ----------------------------------------
+ Run this OUTSIDE any container, from the Laravel folder where composer.json is located.
 
 # 👉 Windows PowerShell
 ```bash
@@ -53,9 +53,9 @@ docker run --rm -v $(pwd):/app -w /app composer install
 
 
 # 5.2 Configure Laravel INSIDE the container
-# ------------------------------------------
-# Run these from the project root (where docker-compose.yml is),
-# they execute inside the laravel-app container.
+ ------------------------------------------
+ Run these from the project root (where docker-compose.yml is),
+ they execute inside the laravel-app container.
 
 ```bash
 docker exec -it laravel-app cp .env.example .env      # Copy env file
@@ -65,11 +65,13 @@ docker exec -it laravel-app php artisan storage:link    # Recreate storage symli
 ```
 
 
-# ⚠️ NOTE
-# The "public/storage" symlink is NOT included in the repo (Windows cannot compress symlinks).
-# Make sure to run the last command:
-#   docker exec -it laravel-app php artisan storage:link
-# after the container is up, otherwise uploaded files won’t be accessible.
+ ⚠️ NOTE
+ The "public/storage" symlink is NOT included in the repo (Windows cannot compress symlinks).
+ Make sure to run the last command:
+ ```bash
+   docker exec -it laravel-app php artisan storage:link
+ ```
+ after the container is up, otherwise uploaded files won’t be accessible.
 
 ## 6. React setup
 
