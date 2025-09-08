@@ -1,3 +1,6 @@
+The project is live and accessible here:  
+👉 [http://31.97.182.153:3000/](http://31.97.182.153:3000/)
+
 # 🚀 Project Setup Instructions
 
 ## 1. Requirements
