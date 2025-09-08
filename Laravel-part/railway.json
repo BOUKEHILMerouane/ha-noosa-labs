@@ -1,0 +1,6 @@
+{
+  "build": {
+    "builder": "dockerfile",
+    "dockerfilePath": "Laravel-part/Dockerfile"
+  }
+}
